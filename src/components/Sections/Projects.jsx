@@ -1,335 +1,153 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  FaGithub, FaExternalLinkAlt, FaHeart, FaEye, 
-  FaCode, FaMobile, FaDesktop, FaDatabase, FaCloud,
-  FaTimes, FaStar, FaUsers
+import {
+  FaGithub, FaExternalLinkAlt, FaEye,
+  FaTimes, FaUser, FaCog
 } from 'react-icons/fa'
+import projectsData, { projectCategories } from '../../data/projectsData'
 
 const Projects = () => {
   const [filter, setFilter] = useState('all')
   const [selectedProject, setSelectedProject] = useState(null)
-  const [likedProjects, setLikedProjects] = useState({})
 
-  // Projects Data
-  const projects = [
-    {
-      id: 1,
-      title: "E-Commerce Platform",
-      category: "fullstack",
-      type: "Full Stack",
-      tech: ["React", "Node.js", "MongoDB", "Express", "Redux", "Tailwind"],
-      description: "A complete e-commerce solution with user authentication, product management, shopping cart, payment integration, and order tracking system.",
-      features: [
-        "User authentication with JWT",
-        "Product search and filtering",
-        "Shopping cart with quantity management",
-        "Secure payment gateway integration",
-        "Order history and tracking",
-        "Admin dashboard for product management"
-      ],
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=600",
-      github: "https://github.com",
-      demo: "https://demo.com",
-      duration: "3 months",
-      team: "Solo Project",
-      likes: 45,
-      views: 1200
-    },
-    {
-      id: 2,
-      title: "Weather Forecast App",
-      category: "frontend",
-      type: "Frontend",
-      tech: ["React", "API Integration", "Chart.js", "Tailwind", "Axios"],
-      description: "Real-time weather application with 5-day forecast, interactive maps, and weather alerts using OpenWeatherMap API.",
-      features: [
-        "Real-time weather data",
-        "5-day weather forecast",
-        "Interactive weather maps",
-        "Location-based weather",
-        "Weather alerts and notifications",
-        "Temperature unit conversion"
-      ],
-      image: "https://images.unsplash.com/photo-1592210454359-9043ad067fc1?w=600",
-      github: "https://github.com",
-      demo: "https://demo.com",
-      duration: "2 weeks",
-      team: "Solo Project",
-      likes: 32,
-      views: 890
-    },
-    {
-      id: 3,
-      title: "Task Management System",
-      category: "fullstack",
-      type: "Full Stack",
-      tech: ["React", "Node.js", "PostgreSQL", "Socket.io", "Tailwind"],
-      description: "Collaborative task management platform with real-time updates, team workspaces, and productivity analytics.",
-      features: [
-        "Real-time task updates",
-        "Team collaboration features",
-        "Task assignment and tracking",
-        "Progress analytics dashboard",
-        "File attachments",
-        "Comment and notification system"
-      ],
-      image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600",
-      github: "https://github.com",
-      demo: "https://demo.com",
-      duration: "2 months",
-      team: "Team of 3",
-      likes: 67,
-      views: 2100
-    },
-    {
-      id: 4,
-      title: "Portfolio Website",
-      category: "frontend",
-      type: "Frontend",
-      tech: ["React", "Tailwind", "Framer Motion", "EmailJS"],
-      description: "Modern, responsive portfolio website with smooth animations, dark mode, and contact form functionality.",
-      features: [
-        "Responsive design",
-        "Dark/Light mode toggle",
-        "Smooth scroll animations",
-        "Contact form with EmailJS",
-        "Project filtering system",
-        "Performance optimized"
-      ],
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600",
-      github: "https://github.com",
-      demo: "https://demo.com",
-      duration: "1 month",
-      team: "Solo Project",
-      likes: 89,
-      views: 3400
-    },
-    {
-      id: 5,
-      title: "Social Media Dashboard",
-      category: "frontend",
-      type: "Frontend",
-      tech: ["React", "Chart.js", "REST API", "Tailwind"],
-      description: "Analytics dashboard for social media metrics with interactive charts and real-time data visualization.",
-      features: [
-        "Multi-platform analytics",
-        "Interactive data charts",
-        "Custom date range selection",
-        "Export reports feature",
-        "Real-time data updates",
-        "User engagement metrics"
-      ],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600",
-      github: "https://github.com",
-      demo: "https://demo.com",
-      duration: "3 weeks",
-      team: "Solo Project",
-      likes: 54,
-      views: 1560
-    },
-    {
-      id: 6,
-      title: "Chat Application",
-      category: "fullstack",
-      type: "Full Stack",
-      tech: ["React", "Socket.io", "Node.js", "MongoDB", "Tailwind"],
-      description: "Real-time chat application with private messaging, group chats, and file sharing capabilities.",
-      features: [
-        "Real-time messaging",
-        "Private and group chats",
-        "File and image sharing",
-        "User presence indicators",
-        "Message search functionality",
-        "End-to-end encryption"
-      ],
-      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600",
-      github: "https://github.com",
-      demo: "https://demo.com",
-      duration: "1.5 months",
-      team: "Team of 2",
-      likes: 78,
-      views: 2450
+  const filteredProjects = filter === 'all'
+    ? projectsData
+    : projectsData.filter(p => p.category === filter)
+
+  // Lock body scroll when modal open + close on Escape
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') setSelectedProject(null) }
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden'
+      window.addEventListener('keydown', onKey)
+    } else {
+      document.body.style.overflow = ''
     }
-  ]
-
-  // Filter categories
-  const categories = [
-    { id: 'all', name: 'All Projects', icon: <FaStar /> },
-    { id: 'frontend', name: 'Frontend', icon: <FaDesktop /> },
-    { id: 'fullstack', name: 'Full Stack', icon: <FaDatabase /> }
-  ]
-
-  // Filter projects
-  const filteredProjects = filter === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === filter)
-
-  // Handle like
-  const handleLike = (projectId) => {
-    setLikedProjects(prev => ({
-      ...prev,
-      [projectId]: !prev[projectId]
-    }))
-  }
-
-  // Get icon for tech
-  const getTechIcon = (tech) => {
-    if (tech.includes('React')) return <FaCode className="text-blue-400" />
-    if (tech.includes('Node')) return <FaDatabase className="text-green-400" />
-    if (tech.includes('Mobile')) return <FaMobile className="text-purple-400" />
-    return null
-  }
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [selectedProject])
 
   return (
     <section id="projects" className="py-20 bg-black/30">
       <div className="container mx-auto px-6">
-        
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            My Projects
+            Featured Projects
           </h2>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Here are some of my best works. Each project represents a unique challenge solved.
+            Real client products I worked on — payment platforms, CRM systems and mobile-app backends
           </p>
         </motion.div>
 
-        {/* Filter Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex justify-center gap-4 mb-12 flex-wrap"
-        >
-          {categories.map((cat) => (
+        {/* Filter */}
+        <div className="flex justify-center gap-3 mb-12 flex-wrap">
+          {projectCategories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setFilter(cat.id)}
-              className={`flex items-center gap-2 px-6 py-2 rounded-full transition-all ${
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
                 filter === cat.id
                   ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg'
                   : 'bg-white/10 text-gray-300 hover:bg-white/20'
               }`}
             >
-              {cat.icon}
               {cat.name}
             </button>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {filteredProjects.map((project, index) => (
-            <motion.div
+            <motion.article
               key={project.id}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="group relative"
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ delay: index * 0.08 }}
+              whileHover={{ y: -8 }}
+              className="group"
             >
-              <div className="bg-white/10 backdrop-blur-lg rounded-xl overflow-hidden border border-white/20 hover:border-purple-500/50 transition-all h-full">
-                
-                {/* Project Image */}
+              <div className="bg-white/10 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/50 transition-all h-full flex flex-col">
                 <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                  <img
+                    src={project.image}
+                    alt={`${project.title} — ${project.type}`}
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
-                  
-                  {/* Category Badge */}
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-purple-500/90 backdrop-blur-sm rounded-full text-xs font-semibold">
+                    <span className="px-3 py-1 bg-purple-500/90 backdrop-blur-sm rounded-full text-xs font-semibold text-white">
                       {project.type}
                     </span>
                   </div>
-
-                  {/* View Button Overlay */}
                   <button
                     onClick={() => setSelectedProject(project)}
                     className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+                    aria-label={`View ${project.title} case study`}
                   >
-                    <span className="px-4 py-2 bg-white text-gray-900 rounded-lg font-semibold flex items-center gap-2">
-                      <FaEye /> Quick View
+                    <span className="px-4 py-2 bg-white text-gray-900 rounded-lg font-semibold flex items-center gap-2 text-sm">
+                      <FaEye /> View Case Study
                     </span>
                   </button>
                 </div>
 
-                {/* Project Info */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-purple-400 transition">
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-purple-300 transition">
                     {project.title}
                   </h3>
-                  
-                  <p className="text-gray-300 text-sm mb-4 line-clamp-2">
-                    {project.description}
+                  <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                    {project.tagline}
                   </p>
-
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.slice(0, 3).map((tech, i) => (
-                      <span key={i} className="text-xs px-2 py-1 bg-white/10 rounded-full">
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    {project.tech.slice(0, 4).map((tech, i) => (
+                      <span key={i} className="text-xs px-2 py-1 bg-white/10 rounded-full text-gray-300">
                         {tech}
                       </span>
                     ))}
-                    {project.tech.length > 3 && (
-                      <span className="text-xs px-2 py-1 bg-white/10 rounded-full">
-                        +{project.tech.length - 3}
+                    {project.tech.length > 4 && (
+                      <span className="text-xs px-2 py-1 bg-white/10 rounded-full text-gray-400">
+                        +{project.tech.length - 4}
                       </span>
                     )}
                   </div>
-
-                  {/* Stats & Actions */}
-                  <div className="flex justify-between items-center pt-4 border-t border-white/10">
-                    <div className="flex gap-4 text-sm text-gray-400">
-                      <button 
-                        onClick={() => handleLike(project.id)}
-                        className={`flex items-center gap-1 transition ${
-                          likedProjects[project.id] ? 'text-red-500' : 'hover:text-red-500'
-                        }`}
-                      >
-                        <FaHeart /> {project.likes + (likedProjects[project.id] ? 1 : 0)}
-                      </button>
-                      <span className="flex items-center gap-1">
-                        <FaEye /> {project.views}
-                      </span>
-                    </div>
-                    
-                    <div className="flex gap-2">
-                      <a 
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-white transition"
-                      >
-                        <FaGithub size={18} />
-                      </a>
-                      <a 
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-white transition"
-                      >
-                        <FaExternalLinkAlt size={16} />
-                      </a>
+                  <div className="mt-auto pt-4 border-t border-white/10 flex justify-between items-center">
+                    <button
+                      onClick={() => setSelectedProject(project)}
+                      className="text-sm text-purple-300 hover:text-purple-200 font-medium"
+                    >
+                      Read case study →
+                    </button>
+                    <div className="flex gap-3 text-gray-400">
+                      {project.github && (
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                          <FaGithub size={18} className="hover:text-white transition" />
+                        </a>
+                      )}
+                      {project.demo && (
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer" aria-label="Live demo">
+                          <FaExternalLinkAlt size={16} className="hover:text-white transition" />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>
 
-      {/* Project Modal */}
+      {/* Case study modal */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -338,86 +156,118 @@ const Projects = () => {
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/90 backdrop-blur-lg z-50 flex items-center justify-center p-4 overflow-y-auto"
             onClick={() => setSelectedProject(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${selectedProject.title} case study`}
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="max-w-4xl w-full bg-gradient-to-br from-gray-900 to-purple-900 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="max-w-3xl w-full bg-gradient-to-br from-gray-900 to-purple-900 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto my-8"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="relative">
                 <button
                   onClick={() => setSelectedProject(null)}
                   className="absolute top-4 right-4 z-10 p-2 bg-black/50 rounded-full hover:bg-black/70 transition"
+                  aria-label="Close case study"
                 >
                   <FaTimes />
                 </button>
-                
-                <img 
-                  src={selectedProject.image} 
-                  alt={selectedProject.title}
-                  className="w-full h-64 object-cover"
+                <img
+                  src={selectedProject.image}
+                  alt={`${selectedProject.title} screenshot`}
+                  className="w-full h-56 object-cover"
+                  loading="lazy"
                 />
-                
-                <div className="p-8">
-                  <h2 className="text-3xl font-bold mb-4">{selectedProject.title}</h2>
-                  
-                  <div className="grid md:grid-cols-2 gap-6 mb-6">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-2 text-purple-400">Project Details</h3>
-                      <ul className="space-y-2 text-gray-300">
-                        <li>📅 Duration: {selectedProject.duration}</li>
-                        <li>👥 Team: {selectedProject.team}</li>
-                        <li>💻 Type: {selectedProject.type}</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h3 className="text-lg font-semibold mb-2 text-purple-400">Technologies</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedProject.tech.map((tech, i) => (
-                          <span key={i} className="px-3 py-1 bg-white/10 rounded-full text-sm">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="mb-6">
-                    <h3 className="text-lg font-semibold mb-2 text-purple-400">Description</h3>
+                <div className="p-6 md:p-8 space-y-6">
+                  <div>
+                    <span className="inline-block px-3 py-1 bg-purple-500/30 rounded-full text-xs font-semibold text-purple-200 mb-3">
+                      {selectedProject.type}
+                    </span>
+                    <h2 className="text-3xl font-bold mb-2">{selectedProject.title}</h2>
                     <p className="text-gray-300">{selectedProject.description}</p>
                   </div>
-                  
-                  <div className="mb-6">
-                    <h3 className="text-lg font-semibold mb-2 text-purple-400">Key Features</h3>
-                    <ul className="grid md:grid-cols-2 gap-2">
-                      {selectedProject.features.map((feature, i) => (
-                        <li key={i} className="text-gray-300 flex items-center gap-2">
-                          <span className="text-purple-400">✓</span> {feature}
+
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="bg-white/5 rounded-xl p-5">
+                      <h3 className="font-semibold mb-2 text-red-300">Problem</h3>
+                      <p className="text-sm text-gray-300 leading-relaxed">{selectedProject.problem}</p>
+                    </div>
+                    <div className="bg-white/5 rounded-xl p-5">
+                      <h3 className="font-semibold mb-2 text-green-300">Solution</h3>
+                      <p className="text-sm text-gray-300 leading-relaxed">{selectedProject.solution}</p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="font-semibold mb-3 text-purple-300">Key Features</h3>
+                    <ul className="grid sm:grid-cols-2 gap-2">
+                      {selectedProject.features.map((f, i) => (
+                        <li key={i} className="text-sm text-gray-300 flex items-center gap-2 bg-white/5 rounded-lg px-3 py-2">
+                          <span className="text-purple-400">✓</span> {f}
                         </li>
                       ))}
                     </ul>
                   </div>
-                  
-                  <div className="flex gap-4">
-                    <a 
-                      href={selectedProject.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 text-center px-6 py-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition font-semibold"
-                    >
-                      <FaGithub className="inline mr-2" /> View Code
-                    </a>
-                    <a 
-                      href={selectedProject.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 text-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg hover:scale-105 transition font-semibold"
-                    >
-                      <FaExternalLinkAlt className="inline mr-2" /> Live Demo
-                    </a>
+
+                  <div>
+                    <h3 className="font-semibold mb-3 text-purple-300">Technology</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.tech.map((t, i) => (
+                        <span key={i} className="px-3 py-1 bg-white/10 rounded-full text-sm text-gray-200">{t}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-4 text-sm">
+                    <div className="flex items-start gap-2 bg-white/5 rounded-lg p-4">
+                      <FaUser className="text-purple-400 mt-0.5 shrink-0" />
+                      <div>
+                        <p className="font-semibold text-gray-200">My Role</p>
+                        <p className="text-gray-400">{selectedProject.role}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2 bg-white/5 rounded-lg p-4">
+                      <FaCog className="text-purple-400 mt-0.5 shrink-0" />
+                      <div>
+                        <p className="font-semibold text-gray-200">Development Type</p>
+                        <p className="text-gray-400">{selectedProject.developmentType} · {selectedProject.team}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    {selectedProject.demo ? (
+                      <a
+                        href={selectedProject.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 text-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-semibold hover:opacity-90 transition"
+                      >
+                        <FaExternalLinkAlt className="inline mr-2" /> Live Demo
+                      </a>
+                    ) : (
+                      <span className="flex-1 text-center px-6 py-3 bg-white/10 rounded-lg text-gray-400 text-sm">
+                        Live demo available on request (client product)
+                      </span>
+                    )}
+                    {selectedProject.github ? (
+                      <a
+                        href={selectedProject.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 text-center px-6 py-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition font-semibold"
+                      >
+                        <FaGithub className="inline mr-2" /> View Code
+                      </a>
+                    ) : (
+                      <span className="flex-1 text-center px-6 py-3 bg-white/10 rounded-lg text-gray-400 text-sm">
+                        Private client codebase
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>

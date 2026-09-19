@@ -7,13 +7,46 @@
   :root {
     color-scheme: dark;
   }
-  
+
   html.dark {
     color-scheme: dark;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html, body {
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  body {
+    background-color: #111827;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
-/* Smooth theme transition */
-* {
+/* Smooth theme transition (scoped — avoids animating every element) */
+.theme-transition,
+.theme-transition body {
   transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
