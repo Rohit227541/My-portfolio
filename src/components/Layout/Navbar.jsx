@@ -2,17 +2,14 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   FaBars, FaTimes, FaHome, FaUser, FaCode,
-  FaProjectDiagram, FaEnvelope, FaSun, FaMoon,
+  FaProjectDiagram, FaEnvelope,
   FaLaptopCode, FaDownload, FaCogs, FaBriefcase, FaMobileAlt
 } from 'react-icons/fa'
-import useTheme from '../../hooks/useTheme'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
-  const { theme, toggleTheme } = useTheme()
-  const isDarkMode = theme === 'dark'
 
   const menuItems = [
     { id: 'home', name: 'Home', icon: <FaHome /> },
@@ -114,16 +111,6 @@ const Navbar = () => {
                 </motion.button>
               ))}
 
-              <motion.button
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                onClick={toggleTheme}
-                className="ml-2 p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-300"
-                aria-label="Toggle theme"
-              >
-                {isDarkMode ? <FaSun className="text-yellow-400 text-lg" /> : <FaMoon className="text-gray-300 text-lg" />}
-              </motion.button>
-
               <motion.a
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -140,15 +127,6 @@ const Navbar = () => {
 
             {/* Mobile */}
             <div className="lg:hidden flex items-center gap-3">
-              <motion.button
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                onClick={toggleTheme}
-                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-300"
-                aria-label="Toggle theme"
-              >
-                {isDarkMode ? <FaSun className="text-yellow-400 text-lg" /> : <FaMoon className="text-gray-300 text-lg" />}
-              </motion.button>
               <motion.button
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
