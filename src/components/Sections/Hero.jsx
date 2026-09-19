@@ -73,7 +73,7 @@ const Hero = () => {
                                 <img
                                     src="/Rohit.jpg"
                                     alt="Rohit — Full Stack Developer"
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-cover object-top"
                                     loading="eager"
                                 />
                             </div>
