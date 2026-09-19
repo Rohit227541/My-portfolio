@@ -3,7 +3,7 @@ import {
   FaGitAlt, FaBootstrap, FaPhp, FaWordpress,
 } from 'react-icons/fa'
 import {
-  SiTypescript, SiNextdotjs, SiMongodb, SiExpress, SiTailwindcss,
+  SiNextdotjs, SiMongodb, SiTailwindcss,
   SiPrisma, SiPostman, SiVercel, SiLinux,
 } from 'react-icons/si'
 import { FaGithub, FaCode } from 'react-icons/fa'
@@ -13,7 +13,6 @@ export const frontendSkills = [
   { name: 'React.js', icon: FaReact, color: 'text-blue-400' },
   { name: 'Next.js', icon: SiNextdotjs, color: 'text-gray-200' },
   { name: 'JavaScript', icon: FaJs, color: 'text-yellow-400' },
-  { name: 'TypeScript', icon: SiTypescript, color: 'text-blue-500' },
   { name: 'HTML5', icon: FaHtml5, color: 'text-orange-500' },
   { name: 'CSS3', icon: FaCss3Alt, color: 'text-blue-500' },
   { name: 'Tailwind CSS', icon: SiTailwindcss, color: 'text-cyan-400' },
@@ -21,16 +20,15 @@ export const frontendSkills = [
 ]
 
 export const backendSkills = [
-  { name: 'Node.js', icon: FaNodeJs, color: 'text-green-500' },
-  { name: 'Express.js', icon: SiExpress, color: 'text-gray-300' },
+  { name: 'Node.js', icon: FaNodeJs, color: 'text-gray-200' },
   { name: 'PHP', icon: FaPhp, color: 'text-purple-400' },
-  { name: 'REST APIs', icon: FaCode, color: 'text-emerald-400' },
+  { name: 'REST APIs', icon: FaCode, color: 'text-gray-200' },
   { name: 'WordPress', icon: FaWordpress, color: 'text-blue-400' },
 ]
 
 export const databaseSkills = [
   { name: 'MySQL', icon: FaDatabase, color: 'text-blue-400' },
-  { name: 'MongoDB', icon: SiMongodb, color: 'text-green-400' },
+  { name: 'MongoDB', icon: SiMongodb, color: 'text-gray-200' },
   { name: 'Prisma', icon: SiPrisma, color: 'text-gray-200' },
 ]
 

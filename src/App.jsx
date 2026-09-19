@@ -19,7 +19,7 @@ const Contact = lazy(() => import('./components/Sections/Contact'))
 
 const SectionFallback = () => (
   <div className="py-16 flex items-center justify-center" aria-hidden="true">
-    <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
+    <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
   </div>
 )
 
@@ -34,7 +34,7 @@ function App() {
   if (loading) return <Loader />
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 min-h-screen text-white overflow-x-clip">
+    <div className="bg-slate-950 min-h-screen text-white overflow-x-clip">
       <Toaster position="top-right" />
       <Navbar />
 

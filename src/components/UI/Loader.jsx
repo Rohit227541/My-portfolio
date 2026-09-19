@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 const Loader = () => {
   return (
-    <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-slate-950 flex items-center justify-center z-50">
       <div className="text-center">
         <motion.div
           animate={{ 
@@ -14,7 +14,7 @@ const Loader = () => {
             repeat: Infinity,
             ease: "linear"
           }}
-          className="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+          className="w-20 h-20 mx-auto mb-4 bg-white rounded-full"
         />
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}

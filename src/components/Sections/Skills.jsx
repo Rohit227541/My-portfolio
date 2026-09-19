@@ -3,15 +3,15 @@ import { FaLaptopCode, FaServer, FaDatabase, FaTools } from 'react-icons/fa'
 import { skillCategories } from '../../data/skillsData'
 
 const categoryIcons = {
-  Frontend: <FaLaptopCode className="text-3xl text-purple-400" />,
-  Backend: <FaServer className="text-3xl text-green-400" />,
+  Frontend: <FaLaptopCode className="text-3xl text-white" />,
+  Backend: <FaServer className="text-3xl text-gray-200" />,
   Database: <FaDatabase className="text-3xl text-blue-400" />,
   'Tools & Deployment': <FaTools className="text-3xl text-orange-400" />,
 }
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
+    <section id="skills" className="py-20 bg-slate-950">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -20,7 +20,7 @@ const Skills = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Tech Stack
           </h2>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
@@ -40,8 +40,8 @@ const Skills = () => {
             >
               <div className="text-center mb-5">
                 <div className="flex justify-center mb-2">{categoryIcons[category.title]}</div>
-                <h3 className="text-lg font-bold text-purple-300">{category.title}</h3>
-                <div className="w-12 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-2"></div>
+                <h3 className="text-lg font-bold text-white">{category.title}</h3>
+                <div className="w-12 h-0.5 bg-white mx-auto mt-2"></div>
               </div>
 
               <ul className="space-y-3">

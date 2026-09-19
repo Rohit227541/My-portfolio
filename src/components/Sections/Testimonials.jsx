@@ -12,7 +12,7 @@ const Testimonials = () => {
           viewport={{ once: true, margin: '-80px' }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Testimonials
           </h2>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
@@ -27,13 +27,13 @@ const Testimonials = () => {
             viewport={{ once: true }}
             className="max-w-xl mx-auto text-center bg-white/10 backdrop-blur-lg rounded-xl p-10 border border-white/10"
           >
-            <div className="inline-flex p-4 bg-purple-500/15 rounded-full text-purple-300 text-3xl mb-4">
+            <div className="inline-flex p-4 bg-white/10 rounded-full text-white text-3xl mb-4">
               <FaComments />
             </div>
             <p className="text-gray-200 font-semibold mb-2">Client testimonials will be added soon.</p>
             <p className="text-sm text-gray-400">
               I'm currently collecting feedback from recent client projects. Have we worked together?{' '}
-              <a href="#contact" className="text-purple-300 hover:text-purple-200">Share your experience →</a>
+              <a href="#contact" className="text-white hover:text-gray-300">Share your experience →</a>
             </p>
           </motion.div>
         ) : (
@@ -47,7 +47,7 @@ const Testimonials = () => {
                 transition={{ delay: idx * 0.1 }}
                 className="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/10"
               >
-                <FaQuoteLeft className="text-purple-400 text-2xl mb-4" />
+                <FaQuoteLeft className="text-white text-2xl mb-4" />
                 <p className="text-gray-300 mb-4">{t.text}</p>
                 <div className="flex items-center gap-1 mb-3">
                   {[...Array(t.rating || 5)].map((_, i) => (

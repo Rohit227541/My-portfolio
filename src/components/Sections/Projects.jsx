@@ -39,7 +39,7 @@ const Projects = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Featured Projects
           </h2>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
@@ -55,7 +55,7 @@ const Projects = () => {
               onClick={() => setFilter(cat.id)}
               className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
                 filter === cat.id
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg'
+                  ? 'bg-white text-black shadow-lg'
                   : 'bg-white/10 text-gray-300 hover:bg-white/20'
               }`}
             >
@@ -76,7 +76,7 @@ const Projects = () => {
               whileHover={{ y: -8 }}
               className="group"
             >
-              <div className="bg-white/10 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/50 transition-all h-full flex flex-col">
+              <div className="bg-white/10 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10 hover:border-white/50 transition-all h-full flex flex-col">
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={project.image}
@@ -86,7 +86,7 @@ const Projects = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-purple-500/90 backdrop-blur-sm rounded-full text-xs font-semibold text-white">
+                    <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-black">
                       {project.type}
                     </span>
                   </div>
@@ -102,7 +102,7 @@ const Projects = () => {
                 </div>
 
                 <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-purple-300 transition">
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-white transition">
                     {project.title}
                   </h3>
                   <p className="text-gray-300 text-sm mb-4 leading-relaxed">
@@ -123,7 +123,7 @@ const Projects = () => {
                   <div className="mt-auto pt-4 border-t border-white/10 flex justify-between items-center">
                     <button
                       onClick={() => setSelectedProject(project)}
-                      className="text-sm text-purple-300 hover:text-purple-200 font-medium"
+                      className="text-sm text-white hover:text-gray-300 font-medium"
                     >
                       Read case study →
                     </button>
@@ -165,7 +165,7 @@ const Projects = () => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="max-w-3xl w-full bg-gradient-to-br from-gray-900 to-purple-900 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto my-8"
+              className="max-w-3xl w-full bg-slate-950 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto my-8"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="relative">
@@ -184,7 +184,7 @@ const Projects = () => {
                 />
                 <div className="p-6 md:p-8 space-y-6">
                   <div>
-                    <span className="inline-block px-3 py-1 bg-purple-500/30 rounded-full text-xs font-semibold text-purple-200 mb-3">
+                    <span className="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-semibold text-white mb-3">
                       {selectedProject.type}
                     </span>
                     <h2 className="text-3xl font-bold mb-2">{selectedProject.title}</h2>
@@ -203,18 +203,18 @@ const Projects = () => {
                   </div>
 
                   <div>
-                    <h3 className="font-semibold mb-3 text-purple-300">Key Features</h3>
+                    <h3 className="font-semibold mb-3 text-white">Key Features</h3>
                     <ul className="grid sm:grid-cols-2 gap-2">
                       {selectedProject.features.map((f, i) => (
                         <li key={i} className="text-sm text-gray-300 flex items-center gap-2 bg-white/5 rounded-lg px-3 py-2">
-                          <span className="text-purple-400">✓</span> {f}
+                          <span className="text-white">✓</span> {f}
                         </li>
                       ))}
                     </ul>
                   </div>
 
                   <div>
-                    <h3 className="font-semibold mb-3 text-purple-300">Technology</h3>
+                    <h3 className="font-semibold mb-3 text-white">Technology</h3>
                     <div className="flex flex-wrap gap-2">
                       {selectedProject.tech.map((t, i) => (
                         <span key={i} className="px-3 py-1 bg-white/10 rounded-full text-sm text-gray-200">{t}</span>
@@ -224,14 +224,14 @@ const Projects = () => {
 
                   <div className="grid sm:grid-cols-2 gap-4 text-sm">
                     <div className="flex items-start gap-2 bg-white/5 rounded-lg p-4">
-                      <FaUser className="text-purple-400 mt-0.5 shrink-0" />
+                      <FaUser className="text-white mt-0.5 shrink-0" />
                       <div>
                         <p className="font-semibold text-gray-200">My Role</p>
                         <p className="text-gray-400">{selectedProject.role}</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-2 bg-white/5 rounded-lg p-4">
-                      <FaCog className="text-purple-400 mt-0.5 shrink-0" />
+                      <FaCog className="text-white mt-0.5 shrink-0" />
                       <div>
                         <p className="font-semibold text-gray-200">Development Type</p>
                         <p className="text-gray-400">{selectedProject.developmentType} · {selectedProject.team}</p>
@@ -245,7 +245,7 @@ const Projects = () => {
                         href={selectedProject.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 text-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-semibold hover:opacity-90 transition"
+                        className="flex-1 text-center px-6 py-3 bg-white text-black rounded-lg font-semibold hover:opacity-90 transition"
                       >
                         <FaExternalLinkAlt className="inline mr-2" /> Live Demo
                       </a>

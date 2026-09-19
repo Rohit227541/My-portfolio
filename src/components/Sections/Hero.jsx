@@ -4,6 +4,7 @@ import {
     FaEnvelope, FaCode, FaFolderOpen, FaDownload
 } from 'react-icons/fa'
 import { TypeAnimation } from 'react-type-animation'
+import UniverseBackground from '../UI/UniverseBackground'
 
 const Hero = () => {
     const socialLinks = [
@@ -21,13 +22,10 @@ const Hero = () => {
     return (
         <section
             id="home"
-            className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-16"
+            className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-16 bg-black"
         >
-            {/* Animated Background */}
-            <div className="absolute inset-0 z-0" aria-hidden="true">
-                <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-            </div>
+            {/* Universe Background — stars + orbits */}
+            <UniverseBackground />
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center max-w-4xl mx-auto">
@@ -38,23 +36,39 @@ const Hero = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
                     >
-                        <span className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 rounded-full text-sm font-semibold text-green-400 mb-6 border border-green-500/30">
+                        <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-sm font-semibold text-white mb-6 border border-white/30">
                             <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
                             </span>
                             Available for Freelance Projects
                         </span>
                     </motion.div>
 
-                    {/* Profile Image */}
+                    {/* Profile Image + Next-level orbit rings */}
                     <motion.div
                         initial={{ scale: 0, rotate: -180 }}
                         animate={{ scale: 1, rotate: 0 }}
                         transition={{ duration: 0.8, type: "spring", stiffness: 260, damping: 20 }}
                         className="relative inline-block mb-8"
                     >
-                        <div className="w-32 h-32 md:w-40 md:h-40 mx-auto bg-gradient-to-r from-blue-500 to-purple-500 rounded-full p-1">
+                        {/* Big orbit ring 1 — white */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 md:w-72 md:h-72 pointer-events-none">
+                            <div className="w-full h-full rounded-full border border-white/20 animate-spin [animation-duration:12s]">
+                                <span className="absolute -top-1 left-1/2 w-2.5 h-2.5 bg-white rounded-full shadow-[0_0_12px_4px_rgba(255,255,255,0.8)]"></span>
+                                <span className="absolute top-1/2 -right-1 w-2 h-2 bg-blue-400 rounded-full shadow-[0_0_10px_3px_rgba(96,165,250,0.9)]"></span>
+                            </div>
+                        </div>
+                        {/* Big orbit ring 2 — blue / yellow planet */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-44 md:w-80 md:h-56 pointer-events-none" style={{ transform: 'translate(-50%,-50%) rotate(-18deg)' }}>
+                            <div className="w-full h-full rounded-[50%] border border-blue-300/20 animate-spin [animation-duration:18s] [animation-direction:reverse]">
+                                <span className="absolute top-2 left-8 w-2 h-2 bg-amber-300 rounded-full shadow-[0_0_10px_3px_rgba(250,204,21,0.9)]"></span>
+                                <span className="absolute bottom-3 right-10 w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_10px_3px_rgba(255,255,255,0.9)]"></span>
+                            </div>
+                        </div>
+                        {/* Glow behind photo */}
+                        <div className="absolute inset-0 -m-4 bg-white/10 blur-2xl rounded-full pointer-events-none"></div>
+                        <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto bg-white rounded-full p-1 ring-4 ring-white/20">
                             <div className="w-full h-full rounded-full overflow-hidden">
                                 <img
                                     src="/Rohit.jpg"
@@ -74,7 +88,7 @@ const Hero = () => {
                         className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4"
                     >
                         Hi, I'm{" "}
-                        <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                        <span className="text-white">
                             Rohit
                         </span>
                     </motion.h1>
@@ -83,7 +97,7 @@ const Hero = () => {
                         initial={{ y: 30, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.6, delay: 0.35 }}
-                        className="text-lg md:text-xl font-semibold text-purple-300 mb-2"
+                        className="text-lg md:text-xl font-semibold text-gray-200 mb-2"
                     >
                         Full Stack Developer
                     </motion.p>
@@ -109,7 +123,7 @@ const Hero = () => {
                             wrapper="span"
                             speed={50}
                             repeat={Infinity}
-                            className="border-r-2 border-purple-500 pr-2"
+                            className="border-r-2 border-white pr-2"
                         />
                     </motion.div>
 
@@ -136,7 +150,7 @@ const Hero = () => {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => scrollTo('contact')}
-                            className="px-6 py-3 md:px-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full font-semibold text-white shadow-lg hover:shadow-xl transition-all flex items-center gap-2"
+                            className="px-6 py-3 md:px-8 bg-white rounded-full font-semibold text-black shadow-lg hover:shadow-xl transition-all flex items-center gap-2"
                         >
                             <FaCode /> Hire Me
                         </motion.button>
@@ -145,7 +159,7 @@ const Hero = () => {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => scrollTo('projects')}
-                            className="px-6 py-3 md:px-8 border-2 border-purple-500 rounded-full font-semibold text-purple-300 hover:bg-purple-500/10 transition-all flex items-center gap-2"
+                            className="px-6 py-3 md:px-8 border-2 border-white/70 rounded-full font-semibold text-white hover:bg-white/10 transition-all flex items-center gap-2"
                         >
                             <FaFolderOpen /> View Projects
                         </motion.button>

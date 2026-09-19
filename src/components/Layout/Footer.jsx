@@ -24,7 +24,7 @@ const Footer = () => {
     { icon: <FaLinkedin />, url: 'https://linkedin.com/in/yourusername', name: 'LinkedIn', color: 'hover:text-blue-500' },
     { icon: <FaTwitter />, url: 'https://twitter.com/yourusername', name: 'Twitter', color: 'hover:text-blue-400' },
     { icon: <FaInstagram />, url: 'https://instagram.com/yourusername', name: 'Instagram', color: 'hover:text-pink-500' },
-    { icon: <FaWhatsapp />, url: 'https://wa.me/917055503724', name: 'WhatsApp', color: 'hover:text-green-500' },
+    { icon: <FaWhatsapp />, url: 'https://wa.me/917055503724', name: 'WhatsApp', color: 'hover:text-white' },
     { icon: <FaEnvelope />, url: 'mailto:Rohitkodexive50@gmail.com', name: 'Email', color: 'hover:text-red-400' }
   ]
 
@@ -49,7 +49,7 @@ const Footer = () => {
   ]
 
   const contactInfo = [
-    { icon: <FaMapMarkerAlt />, text: 'Moradabad 244001, Uttar Pradesh, India', link: null },
+    { icon: <FaMapMarkerAlt />, text: 'Noida, Uttar Pradesh, India', link: null },
     { icon: <FaPhone />, text: '+91 7055503724', link: 'tel:+917055503724' },
     { icon: <FaEnvelope />, text: 'Rohitkodexive50@gmail.com', link: 'mailto:Rohitkodexive50@gmail.com' }
   ]
@@ -72,15 +72,15 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 border-t border-white/10">
+      <footer className="bg-slate-950 border-t border-white/10">
         <div className="container mx-auto px-6 py-12">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
               <div className="flex items-center gap-2 mb-4">
-                <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-2 rounded-lg">
-                  <FaLaptopCode className="text-white text-xl" />
+                <div className="bg-white p-2 rounded-lg">
+                  <FaLaptopCode className="text-black text-xl" />
                 </div>
-                <h3 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                <h3 className="text-xl font-bold text-white">
                   Rohit
                 </h3>
               </div>
@@ -102,8 +102,8 @@ const Footer = () => {
               <ul className="space-y-2">
                 {quickLinks.map((link, idx) => (
                   <li key={idx}>
-                    <button onClick={() => smoothScroll(link.id)} className="text-gray-400 hover:text-purple-300 transition text-sm flex items-center gap-2 group">
-                      <span className="w-0 group-hover:w-2 h-0.5 bg-purple-400 transition-all"></span>
+                    <button onClick={() => smoothScroll(link.id)} className="text-gray-400 hover:text-white transition text-sm flex items-center gap-2 group">
+                      <span className="w-0 group-hover:w-2 h-0.5 bg-white transition-all"></span>
                       {link.name}
                     </button>
                   </li>
@@ -117,7 +117,7 @@ const Footer = () => {
                 {services.map((service, idx) => (
                   <li key={idx}>
                     <span className="text-gray-400 text-sm flex items-center gap-2">
-                      <FaCode className="text-purple-400 text-xs shrink-0" />
+                      <FaCode className="text-white text-xs shrink-0" />
                       {service}
                     </span>
                   </li>
@@ -130,8 +130,8 @@ const Footer = () => {
               <p className="text-gray-400 text-sm mb-4">Subscribe for project updates and notes</p>
               <form onSubmit={handleSubscribe} className="mb-6">
                 <div className="flex gap-2">
-                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Your email" aria-label="Email for newsletter" className="flex-1 min-w-0 px-4 py-2 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-purple-500 text-white text-sm" />
-                  <motion.button type="submit" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg text-white" aria-label="Subscribe">
+                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Your email" aria-label="Email for newsletter" className="flex-1 min-w-0 px-4 py-2 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-white text-white text-sm" />
+                  <motion.button type="submit" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-4 py-2 bg-white rounded-lg text-black" aria-label="Subscribe">
                     <FaPaperPlane />
                   </motion.button>
                 </div>
@@ -139,9 +139,9 @@ const Footer = () => {
               <div className="space-y-2">
                 {contactInfo.map((info, idx) => (
                   <div key={idx} className="flex items-center gap-2 text-sm">
-                    <span className="text-purple-400 shrink-0">{info.icon}</span>
+                    <span className="text-white shrink-0">{info.icon}</span>
                     {info.link ? (
-                      <a href={info.link} className="text-gray-400 hover:text-purple-300 transition break-all">{info.text}</a>
+                      <a href={info.link} className="text-gray-400 hover:text-white transition break-all">{info.text}</a>
                     ) : (
                       <span className="text-gray-400">{info.text}</span>
                     )}
@@ -178,10 +178,10 @@ const Footer = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+          className="fixed bottom-8 right-8 z-50 p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
           aria-label="Scroll to top"
         >
-          <FaArrowUp className="text-white text-xl" />
+          <FaArrowUp className="text-black text-xl" />
         </motion.button>
       )}
     </>

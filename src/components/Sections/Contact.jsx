@@ -17,10 +17,10 @@ const Contact = () => {
 
     const contactInfo = [
         { icon: <FaEnvelope />, title: 'Email', value: 'Rohitkodexive50@gmail.com', link: 'mailto:Rohitkodexive50@gmail.com', color: 'from-blue-500 to-cyan-500' },
-        { icon: <FaPhone />, title: 'Phone', value: '+91 7055503724', link: 'tel:+917055503724', color: 'from-green-500 to-emerald-500' },
-        { icon: <FaWhatsapp />, title: 'WhatsApp', value: 'Chat on WhatsApp', link: 'https://wa.me/917055503724?text=Hi%20Rohit%2C%20I%20have%20a%20project%20in%20mind.', color: 'from-green-500 to-teal-500' },
-        { icon: <FaMapMarkerAlt />, title: 'Location', value: 'Moradabad 244001, UP, India', link: null, color: 'from-red-500 to-orange-500' },
-        { icon: <FaClock />, title: 'Working Hours', value: 'Mon - Sat, 9AM - 7PM IST', link: null, color: 'from-purple-500 to-pink-500' },
+        { icon: <FaPhone />, title: 'Phone', value: '+91 7055503724', link: 'tel:+917055503724', color: 'from-gray-600 to-gray-800' },
+        { icon: <FaWhatsapp />, title: 'WhatsApp', value: 'Chat on WhatsApp', link: 'https://wa.me/917055503724?text=Hi%20Rohit%2C%20I%20have%20a%20project%20in%20mind.', color: 'from-gray-600 to-gray-800' },
+        { icon: <FaMapMarkerAlt />, title: 'Location', value: 'Noida, UP, India', link: null, color: 'from-red-500 to-orange-500' },
+        { icon: <FaClock />, title: 'Working Hours', value: 'Mon - Sat, 9AM - 7PM IST', link: null, color: 'from-gray-600 to-gray-800' },
     ]
 
     const socialLinks = [
@@ -63,7 +63,7 @@ const Contact = () => {
         `w-full px-4 py-3 bg-gray-800/50 border rounded-lg focus:outline-none transition text-white placeholder-gray-500 ${
             errors[field]
                 ? 'border-red-500 focus:border-red-400 focus:ring-1 focus:ring-red-400'
-                : 'border-gray-700 focus:border-purple-500 focus:ring-1 focus:ring-purple-500'
+                : 'border-gray-700 focus:border-white focus:ring-1 focus:ring-white'
         }`
 
     return (
@@ -76,7 +76,7 @@ const Contact = () => {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-12"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
                         Have a project in mind?
                     </h2>
                     <p className="text-gray-300 text-lg max-w-2xl mx-auto">
@@ -93,7 +93,7 @@ const Contact = () => {
                 >
                     <a
                         href="#contact-form"
-                        className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full font-semibold text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center gap-2"
+                        className="px-8 py-3 bg-white rounded-full font-semibold text-black shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center gap-2"
                     >
                         <FaRocket /> Start a Project
                     </a>
@@ -101,7 +101,7 @@ const Contact = () => {
                         href="https://wa.me/917055503724?text=Hi%20Rohit%2C%20I%20have%20a%20project%20in%20mind."
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-8 py-3 bg-green-600 rounded-full font-semibold text-white shadow-lg hover:bg-green-500 hover:scale-105 transition-all flex items-center gap-2"
+                        className="px-8 py-3 bg-white/10 border border-white/30 rounded-full font-semibold text-white shadow-lg hover:bg-white/20 hover:scale-105 transition-all flex items-center gap-2"
                     >
                         <FaWhatsapp /> WhatsApp Me
                     </a>
@@ -126,7 +126,7 @@ const Contact = () => {
                                     </div>
                                     <h3 className="font-semibold mb-1">{info.title}</h3>
                                     {info.link ? (
-                                        <a href={info.link} target={info.link.startsWith('http') ? '_blank' : undefined} rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined} className="text-gray-300 hover:text-purple-300 transition text-sm break-words">
+                                        <a href={info.link} target={info.link.startsWith('http') ? '_blank' : undefined} rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined} className="text-gray-300 hover:text-white transition text-sm break-words">
                                             {info.value}
                                         </a>
                                     ) : (
@@ -156,9 +156,9 @@ const Contact = () => {
                         </div>
 
                         <div className="mt-6 text-center">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/15 border border-green-500/30 rounded-full">
-                                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                <span className="text-sm text-green-400">Available for freelance work</span>
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 border border-white/30 rounded-full">
+                                <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                                <span className="text-sm text-white">Available for freelance work</span>
                             </div>
                         </div>
                     </motion.div>
@@ -201,7 +201,7 @@ const Contact = () => {
                                     whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                                     whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                                     className={`w-full py-3 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 ${
-                                        isSubmitting ? 'bg-gray-600 cursor-not-allowed' : submitted ? 'bg-green-600' : 'bg-gradient-to-r from-blue-500 to-purple-500 hover:shadow-lg'
+                                        isSubmitting ? 'bg-gray-600 cursor-not-allowed' : submitted ? 'bg-white text-black' : 'bg-white text-black hover:shadow-lg'
                                     }`}
                                 >
                                     {isSubmitting ? (<><FaSpinner className="animate-spin" /> Sending...</>)
@@ -212,7 +212,7 @@ const Contact = () => {
 
                             <div className="mt-6 text-center text-sm text-gray-400">
                                 <p>Prefer direct contact?{' '}
-                                    <a href="mailto:Rohitkodexive50@gmail.com" className="text-purple-300 hover:text-purple-200">
+                                    <a href="mailto:Rohitkodexive50@gmail.com" className="text-white hover:text-gray-300">
                                         Rohitkodexive50@gmail.com
                                     </a>
                                 </p>

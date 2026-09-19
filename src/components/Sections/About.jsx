@@ -19,7 +19,7 @@ const About = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             About Me
           </h2>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
@@ -37,8 +37,8 @@ const About = () => {
             className="relative"
           >
             <div className="relative z-10">
-              <div className="w-64 h-64 md:w-80 md:h-80 mx-auto bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl rotate-6"></div>
-              <div className="absolute top-0 left-0 w-64 h-64 md:w-80 md:h-80 mx-auto bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl -rotate-6 opacity-50"></div>
+              <div className="w-64 h-64 md:w-80 md:h-80 mx-auto bg-white rounded-3xl rotate-6"></div>
+              <div className="absolute top-0 left-0 w-64 h-64 md:w-80 md:h-80 mx-auto bg-gradient-to-r from-white to-gray-500 rounded-3xl -rotate-6 opacity-50"></div>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-56 h-56 md:w-72 md:h-72 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl flex items-center justify-center shadow-2xl overflow-hidden">
                   <img
@@ -50,8 +50,8 @@ const About = () => {
                 </div>
               </div>
             </div>
-            <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-blue-500/20 rounded-full blur-xl"></div>
-            <div className="absolute -top-4 -right-4 w-20 h-20 bg-purple-500/20 rounded-full blur-xl"></div>
+            <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
+            <div className="absolute -top-4 -right-4 w-20 h-20 bg-white/20 rounded-full blur-xl"></div>
           </motion.div>
 
           {/* Right — story */}
@@ -75,10 +75,10 @@ const About = () => {
               </p>
             </div>
 
-            <div className="flex items-start gap-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl p-4 border border-purple-500/20">
-              <FaHandshake className="text-purple-400 text-xl mt-1 shrink-0" />
+            <div className="flex items-start gap-3 bg-white/10 rounded-xl p-4 border border-white/20">
+              <FaHandshake className="text-white text-xl mt-1 shrink-0" />
               <p className="text-gray-300 text-sm leading-relaxed">
-                <span className="text-purple-300 font-semibold">Client-focused development:</span>{' '}
+                <span className="text-white font-semibold">Client-focused development:</span>{' '}
                 clear communication, milestone-wise progress and clean handover with
                 documentation — suitable for direct clients and agency collaborations.
               </p>
@@ -94,7 +94,7 @@ const About = () => {
                   transition={{ delay: i * 0.08 }}
                   className="bg-white/10 backdrop-blur-lg rounded-xl p-5 hover:bg-white/15 transition"
                 >
-                  <div className="text-2xl text-purple-400 mb-2">{h.icon}</div>
+                  <div className="text-2xl text-white mb-2">{h.icon}</div>
                   <h4 className="font-bold text-white mb-1">{h.title}</h4>
                   <p className="text-sm text-gray-400 leading-relaxed">{h.text}</p>
                 </motion.div>
@@ -102,8 +102,8 @@ const About = () => {
             </div>
 
             <div className="flex items-center gap-2 text-sm text-gray-400">
-              <FaDatabase className="text-purple-400" />
-              <span>Based in Moradabad, India · Working remotely with clients & agencies</span>
+              <FaDatabase className="text-white" />
+              <span>Based in Noida, India · Working remotely with clients & agencies</span>
             </div>
           </motion.div>
         </div>

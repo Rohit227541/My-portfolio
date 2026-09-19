@@ -56,7 +56,7 @@ const Navbar = () => {
     <>
       <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-gray-900/95 backdrop-blur-xl shadow-2xl border-b border-white/10'
+          ? 'bg-slate-950/95 backdrop-blur-xl shadow-2xl border-b border-white/10'
           : 'bg-transparent'
       }`}>
         <div className="container mx-auto px-4 md:px-6">
@@ -71,13 +71,13 @@ const Navbar = () => {
               aria-label="Rohit — home"
             >
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl blur-lg opacity-75 group-hover:opacity-100 transition duration-500"></div>
-                <div className="relative bg-gradient-to-r from-blue-500 to-purple-500 p-2 rounded-xl">
-                  <FaLaptopCode className="text-white text-xl md:text-2xl" />
+                <div className="absolute inset-0 bg-white rounded-xl blur-lg opacity-40 group-hover:opacity-70 transition duration-500"></div>
+                <div className="relative bg-white p-2 rounded-xl">
+                  <FaLaptopCode className="text-black text-xl md:text-2xl" />
                 </div>
               </div>
               <div>
-                <h1 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                <h1 className="text-xl md:text-2xl font-bold text-white">
                   Rohit
                 </h1>
                 <p className="text-xs text-gray-400 hidden md:block">Full Stack Developer</p>
@@ -95,7 +95,7 @@ const Navbar = () => {
                   transition={{ delay: index * 0.04 }}
                   className={`relative px-3 py-2 rounded-lg transition-all duration-300 group text-sm ${
                     activeSection === item.id
-                      ? 'text-purple-300'
+                      ? 'text-white'
                       : 'text-gray-300 hover:text-white'
                   }`}
                 >
@@ -106,7 +106,7 @@ const Navbar = () => {
                   {activeSection === item.id && (
                     <motion.div
                       layoutId="activeSection"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-white rounded-full"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -131,7 +131,7 @@ const Navbar = () => {
                 whileTap={{ scale: 0.95 }}
                 href="/Mr.Rohit.pdf"
                 download
-                className="ml-2 px-5 py-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 text-sm"
+                className="ml-2 px-5 py-2 bg-white rounded-lg font-semibold text-black shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 text-sm"
               >
                 <FaDownload className="text-sm" />
                 <span>Resume</span>
@@ -170,7 +170,7 @@ const Navbar = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden bg-gray-900/95 backdrop-blur-xl border-t border-white/10 overflow-hidden max-h-[70vh] overflow-y-auto"
+              className="lg:hidden bg-slate-950/95 backdrop-blur-xl border-t border-white/10 overflow-hidden max-h-[70vh] overflow-y-auto"
             >
               <div className="container mx-auto px-4 py-4">
                 <div className="flex flex-col gap-2">
@@ -183,7 +183,7 @@ const Navbar = () => {
                       transition={{ delay: index * 0.04 }}
                       className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
                         activeSection === item.id
-                          ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-purple-300 border-l-4 border-purple-500'
+                          ? 'bg-white/10 text-white border-l-4 border-white'
                           : 'text-gray-300 hover:bg-white/5'
                       }`}
                     >
@@ -197,7 +197,7 @@ const Navbar = () => {
                     transition={{ delay: 0.3 }}
                     href="/Mr.Rohit.pdf"
                     download
-                    className="mt-4 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-semibold text-center flex items-center justify-center gap-2"
+                    className="mt-4 px-6 py-3 bg-white text-black rounded-lg font-semibold text-center flex items-center justify-center gap-2"
                   >
                     <FaDownload /> Download Resume
                   </motion.a>

@@ -5,7 +5,7 @@ const experienceData = [
     role: 'Full Stack Developer',
     company: 'Freelance / Client Projects',
     period: '2023 — Present',
-    location: 'Moradabad, India · Remote',
+    location: 'Noida, UP, India · Remote',
     responsibilities: [
       'Build complete products: business websites, CRM panels, payment flows and mobile-app backends.',
       'Develop frontend in React / Next.js and backend APIs in Node.js / PHP with MySQL / MongoDB.',
@@ -13,7 +13,7 @@ const experienceData = [
       'Handle deployment on Vercel / cPanel and ongoing maintenance.',
     ],
     technologies: ['React', 'Next.js', 'Node.js', 'PHP', 'MySQL', 'REST API'],
-    highlights: ['TrustGates (FinTech)', 'ServiceGO (CRM + Mobile App)', 'ZymGoo (Gym CRM + Mobile App)'],
+    highlights: ['TrustGates (FinTech)', 'ZymGoo (Gym CRM + Mobile App)', 'Kodexive & EasyBulkSMS websites'],
   },
   {
     role: 'Frontend Developer',
